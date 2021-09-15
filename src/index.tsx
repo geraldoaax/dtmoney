@@ -6,10 +6,10 @@ import "./ReactotronConfig";
 
 createServer({
   routes() {
-    // this.urlPrefix = "";
-    // this.namespace = "api";
+    this.urlPrefix = "http://localhost:3000/";
+    this.namespace = "api";
 
-    this.get("http://localhost:3000/api/transactions", () => ({
+    this.get("/transactions", () => ({
       transactions: [
         {
           id: 1,
