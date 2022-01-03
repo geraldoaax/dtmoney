@@ -5,6 +5,7 @@ import closeImg from "../../assets/close.svg";
 import { Container, TrasactionTypeContainer, RadioBox } from "./styles";
 import { FormEvent, useState } from "react";
 import { type } from "os";
+import { api } from "../../services/api";
 
 interface NewTransactionModalProps {
   isOpen: boolean;
@@ -24,12 +25,14 @@ const [type, setType] = useState('deposit');
 function handleCreateNewTransaction(event: FormEvent) {
   event.preventDefault();
 
-  console.log({
+  const data ={
     title,
     value,
     category,
     type
-  })
+  }
+
+  api.post('/transactions', data)
 }
 
 
