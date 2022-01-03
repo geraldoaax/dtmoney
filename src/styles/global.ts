@@ -82,7 +82,7 @@ export const GlobalStyle = createGlobalStyle`
     right: 1.5rem;
     background: transparent;
     border: 0;
-    transition: filter 0.2s ease-in-out;
+    transition: filter 0.2s;
     
     &:hover {
       filter: brightness(0.8);
