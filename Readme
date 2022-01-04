@@ -1,0 +1,6 @@
+Contexto - Compartilhamento de Estados em Diversos Componentes.
+Acessar a mesma informação de diferentes componentes independe do nível onde ele está.
+
+Compartilhamento de Informações.
+Movendo o Estado para o Componente Pai
+Contexto (Caso mais complexos)
