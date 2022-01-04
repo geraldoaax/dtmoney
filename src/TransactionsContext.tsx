@@ -27,7 +27,7 @@ interface TransactionsProviderProps {
 
 interface TransactionsContextData {
   transactions: Transaction[];
-  createTransaction: (transaction: TransactionInput) => void;
+  createTransaction: (transaction: TransactionInput) => Promise<void>;
 }
 
 
@@ -42,8 +42,18 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     api.get("transactions").then((response) => setTransactions(response.data.transactions));
   }, []); //array de dependencias .. se deixar vazio ele executa apenas uma vez
 
-  function createTransaction(transaction: TransactionInput){
-     api.post('/transactions', transaction)
+ async function createTransaction(transactionInput: TransactionInput){
+     const response = await api.post('/transactions', {
+       ...transactionInput,
+       createdAt: new Date(), //certo e fazer no backend
+     }
+     )
+     const { transaction } = response.data;
+
+     setTransactions([ //conceito de imutabilidade
+       ...transactions, //copia o que esta dentro
+       transaction //adiciona o novo 
+     ])
   }
 
   return (
